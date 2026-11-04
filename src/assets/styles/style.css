@@ -1,0 +1,576 @@
+/* CSS HOME PAGE */
+/* Reset básico para eliminar espaçamentos padrão dos navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis globais de cor, espaçamento e transição */
+:root {
+    --cor-fundo: #0f1115;
+    --cor-superficie: #181b21;
+    --cor-superficie-hover: #1c2028;
+    --cor-borda: #262b34;
+    --cor-borda-hover: #363c47;
+    --cor-texto: #e6e8eb;
+    --cor-texto-secundario: #8a92a0;
+    --cor-destaque: #4f8ef7;
+    --cor-destaque-hover: #6ea0f9;
+    --raio-pequeno: 6px;
+    --raio-medio: 10px;
+    --transicao: 0.2s ease;
+}
+
+/* Estilo base do documento */
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'IBM Plex Sans', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Acessibilidade: foco visível para navegação por teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 5%;
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+#logo {
+    height: 40px;
+    border-radius: var(--raio-pequeno);
+    display: block;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    letter-spacing: -0.01em;
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transicao);
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--cor-texto);
+}
+
+/* ===== CONTEÚDO PRINCIPAL ===== */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 5%;
+}
+
+#main-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 880px;
+}
+
+/* ===== CARTÕES ===== */
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-medio);
+    text-align: left;
+    transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+section:hover {
+    border-color: var(--cor-borda-hover);
+    background-color: var(--cor-superficie-hover);
+}
+
+section h2 {
+    color: var(--cor-texto);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+section h3 {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.55;
+}
+
+section img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--raio-pequeno);
+    background-color: var(--cor-fundo);
+    display: block;
+}
+
+/* ===== BOTÃO DE AÇÃO DOS CARTÕES ===== */
+section a {
+    margin-top: auto;
+    display: block;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--raio-pequeno);
+    transition: background-color var(--transicao);
+}
+
+section a:hover,
+section a:focus-visible {
+    background-color: var(--cor-destaque-hover);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 720px) {
+    header {
+        flex-wrap: wrap;
+        padding: 1rem 5%;
+    }
+
+    nav {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        gap: 1.25rem;
+    }
+
+    main {
+        padding: 2rem 5%;
+    }
+
+    #main-div {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+}
+
+/* CSS PÁGINA MESTRE */
+
+/* ===== LAYOUT DA PÁGINA ===== */
+main:has(> #section-criar-mesa) {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    align-items: start;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* Custom element do cabeçalho (display block por padrão de custom elements) */
+rpg-header {
+    display: block;
+}
+
+/* ===== FORMULÁRIO DE CRIAÇÃO ===== */
+#section-criar-mesa form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#section-criar-mesa label {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+#section-criar-mesa label:first-of-type {
+    margin-top: 0;
+}
+
+#section-criar-mesa input[type="text"],
+#section-criar-mesa input[type="file"],
+#section-criar-mesa select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    transition: border-color var(--transicao);
+}
+
+#section-criar-mesa input[type="text"]:hover,
+#section-criar-mesa input[type="file"]:hover,
+#section-criar-mesa select:hover {
+    border-color: var(--cor-borda-hover);
+}
+
+#section-criar-mesa input[type="text"]:focus,
+#section-criar-mesa input[type="file"]:focus,
+#section-criar-mesa select:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+}
+
+#section-criar-mesa select {
+    cursor: pointer;
+    appearance: none;
+    padding-right: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a92a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+}
+
+#section-criar-mesa input[type="file"] {
+    padding: 0.45rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+#section-criar-mesa input[type="file"]::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--cor-superficie-hover);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--cor-borda-hover);
+    border-radius: var(--raio-pequeno);
+    cursor: pointer;
+    transition: background-color var(--transicao);
+}
+
+#section-criar-mesa input[type="file"]::file-selector-button:hover {
+    background-color: var(--cor-borda);
+}
+
+#section-criar-mesa button[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 0.7rem 1rem;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--raio-pequeno);
+    cursor: pointer;
+    transition: background-color var(--transicao);
+}
+
+#section-criar-mesa button[type="submit"]:hover {
+    background-color: var(--cor-destaque-hover);
+}
+
+/* ===== LISTA DE MESAS ===== */
+#section-mesas-criadas {
+    gap: 0.75rem;
+}
+
+.mesa-criada {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "img nome  nome  botao"
+        "img label valor botao";
+    align-items: center;
+    column-gap: 0.35rem;
+    row-gap: 0.15rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+.mesa-criada:hover {
+    border-color: var(--cor-borda-hover);
+    background-color: var(--cor-superficie-hover);
+}
+
+.mesa-criada img {
+    grid-area: img;
+    width: 48px;
+    height: 48px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--raio-pequeno);
+    background-color: var(--cor-superficie);
+    align-self: start;
+}
+
+.mesa-criada h3 {
+    grid-area: nome;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    line-height: 1.3;
+}
+
+.mesa-criada h4 {
+    grid-area: label;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+.mesa-criada p {
+    grid-area: valor;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--cor-destaque);
+}
+
+.mesa-criada .botao-entrar-mesa {
+    grid-area: botao;
+    align-self: center;
+    display: inline-block;
+    margin: 0;
+    padding: 0.45rem 1rem;
+    width: auto;
+    background-color: transparent;
+    color: var(--cor-texto);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid var(--cor-borda-hover);
+    border-radius: var(--raio-pequeno);
+    transition: background-color var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+
+.mesa-criada .botao-entrar-mesa:hover,
+.mesa-criada .botao-entrar-mesa:focus-visible {
+    background-color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+    color: #ffffff;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 860px) {
+    main:has(> #section-criar-mesa) {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+    }
+}
+/* CSS PÁGINA PLAYER */
+
+/* 1. LAYOUT DO MAIN (Força a coluna em vez de lado a lado) */
+main:has(> #section-nova-mesa) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+}
+
+/* 2. ESTILOS DO FORMULÁRIO (Remove o visual nativo do navegador) */
+#section-nova-mesa form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#section-nova-mesa label {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+#section-nova-mesa label:first-of-type {
+    margin-top: 0;
+}
+
+#section-nova-mesa input[type="number"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 0.9rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    transition: border-color var(--transicao);
+    -moz-appearance: textfield;
+}
+
+#section-nova-mesa input[type="number"]::-webkit-outer-spin-button,
+#section-nova-mesa input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#section-nova-mesa input[type="number"]:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+}
+
+#section-nova-mesa button[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--raio-pequeno);
+    cursor: pointer;
+    transition: background-color var(--transicao);
+}
+
+#section-nova-mesa button[type="submit"]:hover {
+    background-color: var(--cor-destaque-hover);
+}
+
+/* 3. SEPARADOR */
+main hr {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--cor-borda);
+}
+
+/* 4. CARDS DE PERSONAGEM (Força o Grid lado a lado) */
+#section-personagens {
+    gap: 1.25rem;
+}
+
+.personagem-criado {
+    display: grid; /* <-- ESSA LINHA ESTAVA FALTANDO */
+    grid-template-columns: 40px 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "img nome  botao"
+        "img valor botao";
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.2rem;
+    padding: 1rem;
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-pequeno);
+    text-align: left; /* Impede a centralização da section */
+}
+
+.personagem-criado:hover {
+    border-color: var(--cor-borda-hover);
+    background-color: var(--cor-superficie-hover);
+}
+
+.personagem-criado img {
+    grid-area: img;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--raio-pequeno);
+    background-color: var(--cor-superficie);
+}
+
+.personagem-criado h3.nome-personagem {
+    grid-area: nome;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+/* Esconde o rótulo "Sistema:" */
+.personagem-criado .rotulo-sistema {
+    display: none;
+}
+
+.personagem-criado p {
+    grid-area: valor;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+.personagem-criado .botao-acessar-personagem {
+    grid-area: botao;
+    min-width: 110px;
+    padding: 0.6rem 1.25rem;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--raio-pequeno);
+    transition: background-color var(--transicao);
+}
+
+.personagem-criado .botao-acessar-personagem:hover {
+    background-color: var(--cor-destaque-hover);
+}
+
+/* 5. RESPONSIVIDADE */
+@media (max-width: 520px) {
+    .personagem-criado {
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "img nome"
+            "img valor"
+            "botao botao";
+        row-gap: 0.5rem;
+    }
+
+    .personagem-criado .botao-acessar-personagem {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

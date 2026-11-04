@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Ferramenta Foda - Mestre</title>
+</head>
+<body>
+    <rpg-header></rpg-header>
+    <main>
+        <section id="section-criar-mesa">
+            <h2>Criar nova mesa.</h2>
+            <form action="">
+                <label for="nome-mesa">Nome da Mesa:</label>
+                <input type="text" name="nome-mesa" id="input-nome-mesa">
+                <label for="sistema-mesa">Sistema:</label>
+                <select name="sistema" id="sistema-mesa">
+                    <option value="" disabled selected hidden>Escolha um Sistema</option>
+                    <option value="dnd5e">Dungeons and Dragons 5th Edition</option>
+                    <option value="outro">Sistema Personalizado</option>
+                </select>
+                <label for="imagem-mesa">Ícone da Mesa:</label>
+                <input type="file" accept="image/*">
+                <button type="submit" id="botao-submit-mesa">Criar Mesa</button>
+            </form>
+        </section>
+        <section id="section-mesas-criadas">
+            <h2>Mesas Criadas</h2>
+                <div id="exemplo-mesa1" class="mesa-criada">
+                    <img src="https://i.pinimg.com/564x/d8/37/b8/d837b8de13f954b0d93a166eeaee776f.jpg" alt="imagem-mesa">
+                    <h3 class="nome-mesa-criada">Mesa do Pedinho</h3>
+                    <h4 class="rotulo-sistema">Sistema:</h4>
+                    <p class="sistema-mesa-criada">D&D 5e</p>
+                    <a class="botao-entrar-mesa" href="">Entrar</a>
+                </div>
+                <div id="exemplo-mesa2" class="mesa-criada">
+                    <img src="https://yt3.googleusercontent.com/m9_eBcXUOQIah3_d_k5ayEeLznZX1wlXGEAGQCssE43UO24ctV0PqER4PdnFGG0bKNv2y4UtOSI=s900-c-k-c0x00ffffff-no-rj" alt="imagem-mesa">
+                    <h3 class="nome-mesa-criada">Baldur's Gate 5</h3>
+                    <h4 class="rotulo-sistema">Sistema:</h4>
+                    <p class="sistema-mesa-criada">D&D 5e</p>
+                    <a class="botao-entrar-mesa" href="">Entrar</a>
+                </div>
+                <div id="exemplo-mesa3" class="mesa-criada">
+                    <img src="https://i.pinimg.com/originals/37/47/98/3747986b9aa0979c7a725ab74512d021.jpg" alt="imagem-mesa">
+                    <h3 class="nome-mesa-criada">RPGzin dos Crias</h3>
+                    <h4 class="rotulo-sistema">Sistema:</h4>
+                    <p class="sistema-mesa-criada">Personalizado</p>
+                    <a class="botao-entrar-mesa" href="">Entrar</a>
+                </div>
+        </section>
+    </main>
+</body>
+<script src="/src/components/components.js"></script>
+</html>
